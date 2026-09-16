@@ -1,7 +1,7 @@
-import { nowPlayingAction } from "@/core/actions/movie/now-playing.actions";
-import { popularMoviesAction } from "@/core/actions/movie/popular.actions";
-import { topRatedMoviesAction } from "@/core/actions/movie/top-rated.actions";
-import { upcomingMoviesAction } from "@/core/actions/movie/upcoming.actions";
+import { nowPlayingAction } from "@/core/actions/movies/now-playing.actions";
+import { popularMoviesAction } from "@/core/actions/movies/popular.actions";
+import { topRatedMoviesAction } from "@/core/actions/movies/top-rated.actions";
+import { upcomingMoviesAction } from "@/core/actions/movies/upcoming.actions";
 import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
 
 export const useMovies = () => {
@@ -29,7 +29,6 @@ export const useMovies = () => {
   const topRatedQuery = useInfiniteQuery({
     queryKey: ["movies", "topRated"],
     queryFn: ({ pageParam }) => {
-      console.log(`page: ${pageParam}`);
       return topRatedMoviesAction({ page: pageParam });
     },
     initialPageParam: 1,
